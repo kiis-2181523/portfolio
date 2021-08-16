@@ -1,0 +1,471 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+main {
+  margin: 0;
+}
+
+.subTitle {
+  font-family: "Oswald", sans-serif;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.sentence {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.map {
+  width: 100%;
+  height: 60vw;
+}
+
+#splash {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: black;
+  text-align: center;
+  color: white;
+}
+
+#splash_logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#splash_logo img {
+  width: 200px;
+}
+
+.fadeUp {
+  -webkit-animation-name: fadeUpAnime;
+          animation-name: fadeUpAnime;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@-webkit-keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.brand {
+  padding-left: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+}
+
+.site-header {
+  position: relative;
+  z-index: 998;
+}
+
+.site-header__wrapper {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.nav__item a {
+  color: white;
+  display: block;
+  padding: 1.5rem 1rem;
+}
+
+/*ボタン外側*/
+.openbtn {
+  border: solid 2px white;
+  position: fixed;
+  background: black;
+  z-index: 998;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  display: block;
+  right: 5px;
+  top: 5px;
+}
+
+/*ボタン内側*/
+.openbtn span {
+  display: inline-block;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  /*アニメーションの設定*/
+  position: absolute;
+  left: 14px;
+  height: 2px;
+  border-radius: 5px;
+  background: #fff;
+  width: 45%;
+}
+
+.openbtn span:nth-of-type(1) {
+  top: 13px;
+}
+
+.openbtn span:nth-of-type(2) {
+  top: 19px;
+}
+
+.openbtn span:nth-of-type(3) {
+  top: 25px;
+}
+
+.openbtn span:nth-of-type(3)::after {
+  /*3つ目の要素のafterにMenu表示を指定*/
+  content: "Menu";
+  position: absolute;
+  top: 5px;
+  left: -2px;
+  color: #fff;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+/*activeクラスが付与されると線が回転して×になり、Menu=>Closeに変更*/
+.openbtn.active span:nth-of-type(1) {
+  top: 14px;
+  left: 18px;
+  -webkit-transform: translateY(6px) rotate(-45deg);
+          transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3) {
+  top: 26px;
+  left: 18px;
+  -webkit-transform: translateY(-6px) rotate(45deg);
+          transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+
+.openbtn.active span:nth-of-type(3)::after {
+  /*3つ目の要素のafterにClose表示を指定*/
+  content: "Close";
+  -webkit-transform: translateY(0) rotate(-45deg);
+          transform: translateY(0) rotate(-45deg);
+  top: 5px;
+  left: 4px;
+}
+
+#g-nav.panelactive #g-nav-list {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 100vh;
+  padding-top: 100px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#g-nav ul {
+  position: absolute;
+  z-index: 99;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+nav ul {
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+
+#g-nav {
+  position: fixed;
+  z-index: 99;
+  top: -120%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+#g-nav.panelactive {
+  top: 0;
+}
+
+.slider {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  height: 50vh;
+}
+
+.slider-item01 {
+  background: url(img/S__58728450.jpg);
+}
+
+.slider-item02 {
+  background: url(img/S__58728452.jpg);
+}
+
+.slider-item03 {
+  background: url(img/S__58728453.jpg);
+}
+
+.slider-item {
+  width: 100%;
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.slider-item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/*やじるしの設定*/
+.slick-prev,
+.slick-next {
+  position: absolute;
+  z-index: 3;
+  top: 42%;
+  cursor: pointer;
+  outline: none;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  height: 25px;
+  width: 25px;
+}
+
+.slick-prev {
+  /*戻る矢印の位置と形状*/
+  left: 2.5%;
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+}
+
+.slick-next {
+  /*次へ矢印の位置と形状*/
+  right: 2.5%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.scrolldown {
+  position: absolute;
+  left: 50%;
+  bottom: 120px;
+  height: 200px;
+}
+
+.scrolldown span {
+  z-index: 3;
+  position: absolute;
+  left: -15px;
+  top: -15px;
+  color: white;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+}
+
+.scrolldown :after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 30px;
+  background: white;
+  -webkit-animation: pathmove 1.4s ease-in-out infinite;
+          animation: pathmove 1.4s ease-in-out infinite;
+  opacity: 0;
+}
+
+@-webkit-keyframes pathmove {
+  0% {
+    height: 0;
+    top: 0;
+    opacity: 0;
+  }
+  30% {
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    top: 50px;
+    opacity: 0;
+  }
+}
+
+@keyframes pathmove {
+  0% {
+    height: 0;
+    top: 0;
+    opacity: 0;
+  }
+  30% {
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    top: 50px;
+    opacity: 0;
+  }
+}
+
+footer {
+  text-align: center;
+}
+
+.gnavi {
+  padding-left: 0;
+  padding-bottom: 5px;
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+}
+
+@media screen and (min-width: 601px) {
+  body {
+    font-size: 30px;
+  }
+  .brand {
+    font-size: 45px;
+    letter-spacing: 2px;
+  }
+  .site-header__wrapper {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .slider {
+    height: 100vh;
+  }
+  .slider-item {
+    height: 100vh;
+  }
+  .scrolldown {
+    bottom: 10px;
+    height: 50px;
+  }
+  .sentence {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .guide {
+    text-align: center;
+  }
+  .map {
+    text-align: center;
+    width: 80%;
+    height: 50vw;
+  }
+  .footer_item {
+    display: inline-block;
+    padding-left: 30px;
+  }
+  .gnavi {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 0 0 50px 0;
+    list-style: none;
+  }
+  .gnavi a {
+    display: block;
+    padding: 10px 30px;
+    text-decoration: none;
+  }
+  .gnavi li {
+    margin-bottom: 20px;
+    list-style: none;
+  }
+  .gnavi li a {
+    position: relative;
+  }
+  .gnavi li.current a,
+  .gnavi li a:hover {
+    color: #0481A2;
+  }
+  .gnavi li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: #0481A2;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transform-origin: center top;
+            transform-origin: center top;
+  }
+  .gnavi li.current a::after,
+  .gnavi li a:hover::after {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+/*# sourceMappingURL=style.css.map */
